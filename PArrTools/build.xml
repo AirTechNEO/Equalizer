@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PArrTools">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse/java-2019-12/eclipse/"/>
+    <property name="PATools.location" value="../PATools"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="13"/>
+    <property name="source" value="13"/>
+    <path id="PATools.classpath">
+        <pathelement location="${PATools.location}/bin"/>
+        <pathelement location="${PATools.location}/lib/jogg-0.0.7.jar"/>
+        <pathelement location="${PATools.location}/lib/jorbis-0.0.15.jar"/>
+        <pathelement location="${PATools.location}/lib/org.apache.commons.io.jar"/>
+        <pathelement location="${PATools.location}/lib/JTransforms-3.1-with-dependencies.jar"/>
+    </path>
+    <path id="PArrTools.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.osgi_3.15.300.v20200520-1959.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.core.commands_3.9.700.v20191217-1850.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.equinox.common_3.12.0.v20200504-1602.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.equinox.registry_3.8.800.v20200406-0956.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.core.runtime_3.18.0.v20200506-2143.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.text_3.10.200.v20200428-0633.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.swt.win32.win32.x86_64_3.114.100.v20200604-0951.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.jface_3.20.0.v20200505-1952.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.jface.text_3.16.300.v20200526-0811.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.ui.workbench_3.119.0.v20200521-1247.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/com.ibm.icu_64.2.0.v20190507-1337.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.ui.forms_3.9.100.v20200413-1417.jar"/>
+        <pathelement location="swing2swt.jar"/>
+        <path refid="PATools.classpath"/>
+    </path>
+    <path id="run.paTools.classpath">
+        <path refid="PArrTools.classpath"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.osgi_3.15.300.v20200520-1959.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.core.commands_3.9.700.v20191217-1850.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.equinox.common_3.12.0.v20200504-1602.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.equinox.registry_3.8.800.v20200406-0956.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.core.runtime_3.18.0.v20200506-2143.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.text_3.10.200.v20200428-0633.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.swt.win32.win32.x86_64_3.114.100.v20200604-0951.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.jface_3.20.0.v20200505-1952.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.jface.text_3.16.300.v20200526-0811.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.ui.workbench_3.119.0.v20200521-1247.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/com.ibm.icu_64.2.0.v20190507-1337.jar"/>
+        <pathelement location="../../../../.p2/pool/plugins/org.eclipse.ui.forms_3.9.100.v20200413-1417.jar"/>
+        <pathelement location="swing2swt.jar"/>
+        <path refid="PATools.classpath"/>
+        <pathelement location="${PATools.location}/lib/jogg-0.0.7.jar"/>
+        <pathelement location="${PATools.location}/lib/jorbis-0.0.15.jar"/>
+        <pathelement location="${PATools.location}/lib/org.apache.commons.io.jar"/>
+        <pathelement location="../PATools/lib/JTransforms-3.1-with-dependencies.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${PATools.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${PATools.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="PArrTools.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="paTools">
+        <java classname="paTools" failonerror="true" fork="yes">
+            <classpath refid="run.paTools.classpath"/>
+        </java>
+    </target>
+</project>
